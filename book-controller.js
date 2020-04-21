@@ -4,9 +4,10 @@ var Book = require('./models/book');
 
 exports.getIndex= function(req, res, next) {
   
-  res.render('index', { title: 'Express' });
+  res.render('book', { title: 'Express' });
 
 };
+
 
 exports.createBook = function(req, res) { 
     var newbook = new Book(req.body);
@@ -69,15 +70,36 @@ exports.deleteBook = function(req, res) {
 };
 
  exports.bookTable = function(req, res) {
-   Book.getBooks = function (err, books){
-    res.json(books);
 
-   };
+        res.send("<h3> LIST OF BOOKS  </h3> ");
+
+
     };
 //this
   
-
- 
+function draw_table()
+{
+	$("#results").empty();
+	$.getJSONuncached = function (url)
+	{
+		return $.ajax(
+		{
+			url: url,
+			type: 'GET',
+			cache: false,
+			success: function (html)
+			{
+				$("#results").append(html);
+				select_row();
+			}
+		});
+	};
+	$.getJSONuncached("/get/html")
+};
+ function read() {
+  var html = fs.readFileSync('book.html', 'utf8');
+  return html.toString();
+}
 
 // // book list
 // router.post("/get/html", function(req, res) {

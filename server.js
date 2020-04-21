@@ -11,7 +11,7 @@ var http = require('http'),
 
 var app = express();
 //var server = http.createServer(router);
-var port = 3000;
+var port = process.env.PORT || 3000;
 var bookCtrl = require('./book-controller');
 
 // helmet 
@@ -26,10 +26,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(require('./routes'));
 
-app.use(express.static(path.resolve(__dirname,'views'))); // something that we provide to user
 
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb+srv://test:ccttestuser@cluster0-fgbfr.mongodb.net/test?retryWrites=true&w=majority');
 mongoose.connection.on('error', (err) => { 
     console.log('Mongodb Error: ', err); 
     process.exit();

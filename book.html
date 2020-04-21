@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="container">
+		<h3><a href="/create"> create book</a></h3>
+		<h1>list</h1>
+			<% if(book.length >0) { %>
+			<table>
+				<thead>
+					<tr>
+						<th>title</th>
+						<th>author</th>
+						<th>publisher</th>
+				</thead>
+				<tbody>
+					<% for(var i =0; i < book.length; i++) { %>
+					<tr>
+						<td>
+                            <a href="/books/show/<&=books[i]._id%>">
+
+                        <%= books[i].title %>
+                            </a>
+						</td>
+                        <td><%= book[i].author %></td>
+                        <td><%= book[i].publisher %></td>
+					</tr>
+                    <% } %>
+				</tbody>
+			</table>
+            <% } else { %>
+            <div>no books found.
+            </div>
+             <% } %>
+             
+
+	</div>
+</body>
+
+</html>
